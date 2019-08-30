@@ -134,25 +134,25 @@ function publicip() {
 }
 
 function _git_status() {
-	gitprompt_line="$(gitprompt)"
-	[ -z "$gitprompt_line" ] && return
-	IFS=' ' read -r branch_name num_ahead num_behind num_staged num_conflicts num_changed num_untracked <<< "$gitprompt_line"
+  gitprompt_line="$(gitprompt)"
+  [ -z "$gitprompt_line" ] && return
+  IFS=' ' read -r branch_name num_ahead num_behind num_staged num_conflicts num_changed num_untracked <<< "$gitprompt_line"
 
-	first_part=''
-	[ "$num_behind" -ne "0" ] && first_part+="${GIT_PROMPT_BEHIND}${num_behind}%{${reset_color}%}"
-	[ "$num_ahead" -ne "0" ] && first_part+="${GIT_PROMPT_AHEAD}${num_ahead}%{${reset_color}%}"
+  first_part=''
+  [ "$num_behind" -ne "0" ] && first_part+="${GIT_PROMPT_BEHIND}${num_behind}%{${reset_color}%}"
+  [ "$num_ahead" -ne "0" ] && first_part+="${GIT_PROMPT_AHEAD}${num_ahead}%{${reset_color}%}"
 
-	second_part=''
-	if [ "$num_staged" -eq "0" ] && [ "$num_conflicts" -eq "0" ] && [ "$num_changed" -eq "0" ] && [ "$num_untracked" -eq "0" ]; then
-			second_part="$GIT_PROMPT_CLEAN%{${reset_color}%}"
-	else
-		[ "$num_staged" -ne "0" ] && second_part+="${GIT_PROMPT_STAGED}${num_staged}%{${reset_color}%}"
-		[ "$num_conflicts" -ne "0" ] && second_part+="${GIT_PROMPT_CONFLICTS}${num_conflicts}%{${reset_color}%}"
-		[ "$num_changed" -ne "0" ] && second_part+="${GIT_PROMPT_CHANGED}${num_changed}%{${reset_color}%}"
-		[ "$num_untracked" -ne "0" ] && second_part+="${GIT_PROMPT_UNTRACKED}%{${reset_color}%}"
-	fi
+  second_part=''
+  if [ "$num_staged" -eq "0" ] && [ "$num_conflicts" -eq "0" ] && [ "$num_changed" -eq "0" ] && [ "$num_untracked" -eq "0" ]; then
+    second_part="$GIT_PROMPT_CLEAN%{${reset_color}%}"
+  else
+    [ "$num_staged" -ne "0" ] && second_part+="${GIT_PROMPT_STAGED}${num_staged}%{${reset_color}%}"
+    [ "$num_conflicts" -ne "0" ] && second_part+="${GIT_PROMPT_CONFLICTS}${num_conflicts}%{${reset_color}%}"
+    [ "$num_changed" -ne "0" ] && second_part+="${GIT_PROMPT_CHANGED}${num_changed}%{${reset_color}%}"
+    [ "$num_untracked" -ne "0" ] && second_part+="${GIT_PROMPT_UNTRACKED}%{${reset_color}%}"
+  fi
 
-	printf '%s\n' "${GIT_PROMPT_PREFIX}${GIT_PROMPT_BRANCH}${branch_name}%{${reset_color}%}${first_part}${GIT_PROMPT_SEPARATOR}${second_part}${GIT_PROMPT_SUFFIX} "
+  printf '%s\n' "${GIT_PROMPT_PREFIX}${GIT_PROMPT_BRANCH}${branch_name}%{${reset_color}%}${first_part}${GIT_PROMPT_SEPARATOR}${second_part}${GIT_PROMPT_SUFFIX} "
 }
 
 function _make_prompt() {
