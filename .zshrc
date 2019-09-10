@@ -175,6 +175,8 @@ HISTFILE=$HOME/.zsh_history
 # The maximum number of events stored in the internal history list.
 HISTSIZE=12000
 # Same as "PS1" -> The primary prompt string, printed before a command is read.
+# NOTE: The prompt string must be enclosed in single quotes -- not double quote
+# -- so that the command substitution is not evaluated in-place instantly.
 PROMPT='$(_make_prompt)'
 # The maximum number of history events to save in the history file.
 SAVEHIST=10000
@@ -262,7 +264,7 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 alias rd='rmdir'
-alias l='exa --long --group-directories-first'
+alias l='ls++'
 alias c='cd'
 alias s='sudo'
 alias v='vim'

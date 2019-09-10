@@ -1,0 +1,37 @@
+! aliases for symbols can be found at /usr/include/X11/keysymdef.h
+
+clear Control
+clear Mod1
+
+! Turn the left-most Alt key into a Ctrl key.
+keycode  64 = Control_L Control_L Control_L Control_L
+
+add Control = Control_L Control_R
+add Mod1 = Alt_L Alt_R
+
+!keycode 108 = Alt_R Alt_R Alt_R Alt_R
+
+! Turn caps lock into AltGr.
+keycode 66 = Mode_switch
+clear Lock
+
+! åäö on ',. when AltGr (caps lock) is used as metakey.
+keycode  24  =  apostrophe  quotedbl  aring       Aring       dead_acute     dead_diaeresis  dead_acute
+keycode  25  =  comma       less      adiaeresis  Adiaeresis  dead_cedilla   dead_caron      dead_cedilla
+keycode  26  =  period      greater   odiaeresis  Odiaeresis  dead_abovedot  periodcentered  dead_abovedot
+
+! en dash and em dash
+keycode  48 = minus underscore endash emdash minus underscore
+! right single quote mark, which is the standard in Swedish
+keycode  52 = semicolon colon rightsinglequotemark colon dead_ogonek dead_doubleacute dead_ogonek dead_doubleacute semicolon colon dead_ogonek dead_doubleacute
+! right double quote mark, which is the standard in Swedish
+keycode  53 = q Q rightdoublequotemark Q q Q
+! no break space (not sure if working)
+! keycode  65 = space nobreakspace space NoSymbol space
+
+! "Macroned" variants of vowels when AltGr (caps lock) is used as metakey.
+keycode  38  =  a  A  amacron  Amacron
+keycode  39  =  o  O  omacron  Omacron
+keycode  40  =  e  E  emacron  Emacron
+keycode  41  =  u  U  umacron  Umacron
+keycode  42  =  i  I  imacron  Imacron
