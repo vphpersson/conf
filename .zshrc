@@ -163,7 +163,7 @@ function _make_prompt() {
   # Compacted $PWD
   pwd="%{$fg[blue]%}%c%{$reset_color%}"
 
-  printf '%s\n' "${time} ${user}@$(hostname) ${pwd} $(_git_status)"
+  printf '%s\n' "${time} ${user}@${HOST} ${pwd} $(_git_status)"
 }
 
 ################################################################################
@@ -282,7 +282,7 @@ zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' group-name ''
 
-zstyle ':completion:*:processes' command "ps -u $(whoami) -o pid,user,comm -w -w"
+zstyle ':completion:*:processes' command "ps -u ${USER} -o pid,user,comm -w -w"
 # zstyle ':completion:*' users command 'awk -F : '($7 != "/usr/bin/nologin"){ print $1 }' /etc/passwd'
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
